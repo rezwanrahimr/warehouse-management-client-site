@@ -1,0 +1,32 @@
+[
+    {
+        
+        "name":"Laptop",
+        "img": "https://cdn.claretandhugh.info/wp-content/uploads/nokia-laptop.jpg"
+    },
+    {
+       
+        "name":"Computer",
+        "img": "https://5.imimg.com/data5/GX/YK/MY-3522780/desktop-computer-500x500.jpg"
+    },
+    {
+       
+        "name":"Smartphone",
+        "img": "https://www.android.com/static/2016/img/one/carousel/nokia_5_3_1x.png"
+    },
+    {
+        "_id": 4,
+        "name":"Refrigarator",
+        "img": "https://sugermint.com/wp-content/uploads/2021/03/Best-Refrigerators-in-India.jpg"
+    },
+    {
+      
+        "name":"TV",
+        "img": "https://auspost.com.au/shop/static/WFS/AusPost-Shop-Site/-/AusPost-Shop/en_AU/product/11003-AusPost/7/resized_1500x1500.jpg"
+    },
+    {
+        
+        "name":"Microwave",
+        "img": "https://media.istockphoto.com/photos/microwave-stove-isolated-picture-id489937746?k=20&m=489937746&s=612x612&w=0&h=ySpOmRFK69_AJa1YQM9rnZ004mr02atbXDJGdprIEwE="
+    }
+]
