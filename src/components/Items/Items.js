@@ -11,17 +11,24 @@ const Items = () => {
     }, [])
     return (
 
-        <div className='items'>
+        <div className='items container'>
             {
-                item.map(items => < >
+                item.slice(0,6).map(items => < >
 
 
                     <Card className='my-3' style={{ width: '18rem' }}>
                         <Card.Img variant="top" src={items.img} />
                         <Card.Body>
                             <Card.Title>{items.name}</Card.Title>
-                           
-                            <Button className='mx-3' variant="primary">Go</Button>
+                            <Card.Subtitle className="mb-2 text-muted">Quantity: {items.quantity}</Card.Subtitle>
+                            <Card.Subtitle className="mb-2 text-muted">Price: $ {items.price}</Card.Subtitle>
+                            <Card.Subtitle className="mb-2 text-muted">Supplier: {items.supplier}</Card.Subtitle>
+                           <hr />
+                            <Card.Text>
+                                <small>{items.description}</small>
+                            </Card.Text>
+
+                            <Button className='mx-3' variant="primary">Update</Button>
                         </Card.Body>
                     </Card>
 

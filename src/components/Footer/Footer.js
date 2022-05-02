@@ -8,12 +8,12 @@ const Footer = () => {
         <footer className=''>
             <div className='footer-content'>
                 <h3> <img
-                            alt=""
-                            src="https://avatars.githubusercontent.com/u/4430336?s=200&v=4"
-                            width="30"
-                            height="30"
-                            className="d-inline-block align-center me-3"
-                        />ORACLE INVENTORY
+                    alt=""
+                    src="https://avatars.githubusercontent.com/u/4430336?s=200&v=4"
+                    width="30"
+                    height="30"
+                    className="d-inline-block align-center me-3"
+                />ORACLE INVENTORY
                 </h3>
                 <p>FOLLOW ORACLE</p>
                 <ul className='social-icon'>
