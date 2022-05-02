@@ -19,23 +19,24 @@ const Login = () => {
         signInWithEmailAndPassword(email, password);
     }
     //Email and Password Authentication End !.
-    
+
     // Google Account Authentication Start.
     const provider = new GoogleAuthProvider();
-    const googleAuth = ()=>{
+    const googleAuth = () => {
         signInWithPopup(auth, provider)
-      .then((result) => {
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-        const token = credential.accessToken;
-        const user = result.user;
-        navigate("/home")
-      }).catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        const email = error.email;
-        const credential = GoogleAuthProvider.credentialFromError(error);
+            .then((result) => {
+                const credential = GoogleAuthProvider.credentialFromResult(result);
+                const token = credential.accessToken;
+                const user = result.user;
+                console.log(user);
+                navigate("/home")
+            }).catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                const email = error.email;
+                const credential = GoogleAuthProvider.credentialFromError(error);
 
-      })
+            })
     }
     // Google Account Authentication End !.
     return (
@@ -49,13 +50,13 @@ const Login = () => {
                             <div className='card-body'>
 
                                 <FontAwesomeIcon className='mx-auto' icon={faUser} />
-                                <form action="" onClick={handleLoginForm}>
+                                <form action="" onSubmit={handleLoginForm}>
 
                                     <input type="email" name="email" id="email" className='form-control my-4 py-2' placeholder='username' />
                                     <input type="password" name="password" id="password" className='form-control my-4 py-2' placeholder='password' />
                                     <div className='text-center mt-3'>
                                         <button type='submit' className='btn btn-primary'>Login</button>
-                                        <a href="" className='nav-link'>Create New Account ?</a>
+                                        <p onClick={() => navigate("/signup")}>Create New Account ?</p>
                                     </div>
                                 </form>
                                 <button onClick={googleAuth}><small> Continue with Google </small></button>
