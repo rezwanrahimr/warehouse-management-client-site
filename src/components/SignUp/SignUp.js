@@ -4,6 +4,10 @@ import { faUser } from '@fortawesome/free-solid-svg-icons'
 import { useNavigate } from 'react-router-dom';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../firebase';
+import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { Button } from 'react-bootstrap';
+import { faGoogle } from '@fortawesome/free-brands-svg-icons';
+import Loading from '../Loading/Loading';
 
 const SignUp = () => {
     const navigate = useNavigate();
@@ -14,7 +18,7 @@ const SignUp = () => {
         alert(error.message);
       }
       else if (loading) {
-        return <p>Loading...</p>
+        return <Loading></Loading>
       }
       else if (user) {
         navigate("/home");
@@ -27,13 +31,34 @@ const SignUp = () => {
         console.log(email, password,confirmPassword);
         createUserWithEmailAndPassword(email, password);
     }
+    // Email and Password Authentication Start !.
+
+    // Google Account Authentication Start.
+    const provider = new GoogleAuthProvider();
+    const googleAuth = () => {
+        signInWithPopup(auth, provider)
+            .then((result) => {
+                const credential = GoogleAuthProvider.credentialFromResult(result);
+                const token = credential.accessToken;
+                const user = result.user;
+                console.log(user);
+                navigate("/home")
+            }).catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                const email = error.email;
+                const credential = GoogleAuthProvider.credentialFromError(error);
+
+            })
+    }
+    // Google Account Authentication End !.
     return (
         <div>
             <div>
                 <div className='container mt-5 pt-5'>
                     <div className='row'>
                         <div className='col-12 col-sm-8 col-md-6 m-auto'>
-                            <h3>Please Login: </h3>
+                            <h3>Please SignUp : </h3>
                             <div className='card border-0 shadow'>
 
                                 <div className='card-body'>
@@ -49,7 +74,7 @@ const SignUp = () => {
                                             <p onClick={() => navigate("/login")}>Alredy have a account ?</p>
                                         </div>
                                     </form>
-                                    {/* <button onClick={}><small> Continue with Google </small></button> */}
+                                    <Button variant="outline-dark" onClick={googleAuth}><FontAwesomeIcon className='me-2' icon={faGoogle} />Continue with Google</Button>
                                 </div>
                             </div>
                         </div>

@@ -6,6 +6,8 @@ import React from 'react';
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 import { Button } from "react-bootstrap";
 import { useNavigate } from 'react-router-dom';
+import {faGoogle } from '@fortawesome/free-brands-svg-icons';
+import Loading from '../Loading/Loading';
 
 
 const Login = () => {
@@ -17,7 +19,7 @@ const Login = () => {
         alert(error.message);
       }
      else if (loading) {
-        return <p>Loading...</p>
+        return <Loading></Loading>
       }
       else if (user) {
         navigate("/home");
@@ -65,14 +67,15 @@ const Login = () => {
                                     <input type="text" name="email" id="email" className='form-control my-4 py-2' placeholder='username' />
                                     <input type="password" name="password" id="password" className='form-control my-4 py-2' placeholder='password' />
                                     <div className='text-center mt-3'>
-                                        <button type='submit' className='btn btn-primary'>Login</button>
+                                        <button type='submit' className='btn btn-primary mb-3'>Login</button>
                                        <p>
-                                       <Button variant="danger">Reset Password</Button>{' '}
+                                       <Button  variant="danger">Reset Password</Button>{' '}
                                        </p>
                                         <p onClick={() => navigate("/signup")}>Create New Account ?</p>
                                     </div>
                                 </form>
-                                <button onClick={googleAuth}><small> Continue with Google </small></button>
+                                <Button variant="outline-dark" onClick={googleAuth}><FontAwesomeIcon className='me-2' icon={faGoogle} />Continue with Google</Button>
+                                
                             </div>
                         </div>
                     </div>
