@@ -4,6 +4,7 @@ import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import auth from '../../firebase';
 import React from 'react';
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { Button } from "react-bootstrap";
 import { useNavigate } from 'react-router-dom';
 
 
@@ -12,6 +13,15 @@ const Login = () => {
     // Email and Password Authentication Start.
     const [signInWithEmailAndPassword, user, loading, error,
     ] = useSignInWithEmailAndPassword(auth);
+    if (error) {
+        alert(error.message);
+      }
+     else if (loading) {
+        return <p>Loading...</p>
+      }
+      else if (user) {
+        navigate("/home");
+      }
     console.log(user);
     const handleLoginForm = (event) => {
         const email = event.target.email.value;
@@ -50,12 +60,15 @@ const Login = () => {
                             <div className='card-body'>
 
                                 <FontAwesomeIcon className='mx-auto' icon={faUser} />
-                                <form action="" onSubmit={handleLoginForm}>
+                                <form onSubmit={handleLoginForm}>
 
-                                    <input type="email" name="email" id="email" className='form-control my-4 py-2' placeholder='username' />
+                                    <input type="text" name="email" id="email" className='form-control my-4 py-2' placeholder='username' />
                                     <input type="password" name="password" id="password" className='form-control my-4 py-2' placeholder='password' />
                                     <div className='text-center mt-3'>
                                         <button type='submit' className='btn btn-primary'>Login</button>
+                                       <p>
+                                       <Button variant="danger">Reset Password</Button>{' '}
+                                       </p>
                                         <p onClick={() => navigate("/signup")}>Create New Account ?</p>
                                     </div>
                                 </form>

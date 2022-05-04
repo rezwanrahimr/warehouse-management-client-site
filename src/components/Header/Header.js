@@ -1,7 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
-
+import { useNavigate } from 'react-router-dom';
+import { onAuthStateChanged, signOut } from 'firebase/auth';
+import auth from '../../firebase';
 const Header = () => {
+  
+    const [user, setUser] = useState({});
+    useEffect(() => {
+        onAuthStateChanged(auth, (user) => {
+            console.log(user);
+            if (user) {
+                setUser(user);
+            } else {
+                setUser({});
+            }
+        })
+    },[])
+    const signOutUser = () => {
+        signOut(auth)
+            .then(() => {
+            }).catch((error) => {
+            });
+    }
+
     return (
         <div>
             <Navbar bg="dark" variant="dark">
@@ -14,13 +35,19 @@ const Header = () => {
                             height="30"
                             className="d-inline-block align-top"
                         />{' '}
-                       ORACLE INVENTORY
+                        ORACLE INVENTORY
                     </Navbar.Brand>
                     <Nav className="me-auto">
                         <Nav.Link href="/home">Home</Nav.Link>
                         <Nav.Link href="/features">Features</Nav.Link>
                         <Nav.Link href="/pricing">Pricing</Nav.Link>
-                        <Nav.Link href="/login">login</Nav.Link>
+                        {
+                            user?.uid ? (
+                                <Nav.Link onClick={signOutUser } href="/login" >sign out</Nav.Link>) : (
+                                <Nav.Link href="/login" >Login</Nav.Link>
+                            )
+                        }
+
                     </Nav>
                 </Container>
             </Navbar>
