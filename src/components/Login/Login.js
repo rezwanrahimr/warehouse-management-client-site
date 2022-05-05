@@ -4,7 +4,7 @@ import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import auth from '../../firebase';
 import React from 'react';
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-import { Button } from "react-bootstrap";
+import { Button, Toast } from "react-bootstrap";
 import { useNavigate } from 'react-router-dom';
 import {faGoogle } from '@fortawesome/free-brands-svg-icons';
 import Loading from '../Loading/Loading';
@@ -16,7 +16,7 @@ const Login = () => {
     const [signInWithEmailAndPassword, user, loading, error,
     ] = useSignInWithEmailAndPassword(auth);
     if (error) {
-        alert(error.message);
+        Toast(error.message);
       }
      else if (loading) {
         return <Loading></Loading>
@@ -47,8 +47,18 @@ const Login = () => {
                 const errorMessage = error.message;
                 const email = error.email;
                 const credential = GoogleAuthProvider.credentialFromError(error);
+                if(errorCode){
+                    Toast(errorCode.message);
+                }
+                if(errorMessage){
+                    Toast(errorMessage);
+                }
+                if(email){
+                    Toast(email.message);
+                }
 
             })
+           
     }
     // Google Account Authentication End !.
     return (

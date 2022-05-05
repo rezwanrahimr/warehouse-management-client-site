@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import auth from '../../firebase';
 const Header = () => {
@@ -24,9 +23,9 @@ const Header = () => {
     }
 
     return (
-        <div>
-            <Navbar bg="dark" variant="dark">
-                <Container>
+        <div className='col-12 col-md-12'>
+            <Navbar  bg="dark" variant="dark">
+                <Container >
                     <Navbar.Brand href="#home">
                         <img
                             alt=""
@@ -40,11 +39,11 @@ const Header = () => {
                     <Nav className="me-auto">
                         <Nav.Link href="/home">Home</Nav.Link>
                         <Nav.Link href="/features">Features</Nav.Link>
-                        <Nav.Link href="/pricing">Pricing</Nav.Link>
+                        <Nav.Link href="/blogs">Blogs</Nav.Link>
                         {
                             user?.uid ? (
                                 <Nav.Link onClick={signOutUser } href="/login" >sign out</Nav.Link>) : (
-                                <Nav.Link href="/login" >Login</Nav.Link>
+                                <Nav.Link  href="/login" >Login</Nav.Link>
                             )
                         }
 

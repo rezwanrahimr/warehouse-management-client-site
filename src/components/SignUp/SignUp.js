@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../firebase';
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-import { Button } from 'react-bootstrap';
+import { Button, Toast } from 'react-bootstrap';
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 import Loading from '../Loading/Loading';
 
@@ -15,7 +15,7 @@ const SignUp = () => {
     const [createUserWithEmailAndPassword, user, loading, error,
     ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
     if (error) {
-        alert(error.message);
+        Toast(error.message);
       }
       else if (loading) {
         return <Loading></Loading>
@@ -48,6 +48,15 @@ const SignUp = () => {
                 const errorMessage = error.message;
                 const email = error.email;
                 const credential = GoogleAuthProvider.credentialFromError(error);
+                if(errorCode){
+                    Toast(errorCode.message);
+                }
+                if(errorMessage){
+                    Toast(errorMessage);
+                }
+                if(email){
+                    Toast(email.message);
+                }
 
             })
     }
