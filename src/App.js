@@ -7,6 +7,9 @@ import Login from './components/Login/Login';
 import SignUp from './components/SignUp/SignUp';
 import Error from './components/Error/Error';
 import Blogs from './components/Blogs/Blogs';
+import ProtractedRoute from './components/ProtractedRoute/ProtractedRoute';
+import Inventory from './components/Inventory/Inventory';
+import ManageInventori from './components/ManageInventori/ManageInventori';
 
 function App() {
   return (
@@ -18,6 +21,8 @@ function App() {
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/signup' element={<SignUp></SignUp>}></Route>
         <Route path='/blogs' element={<Blogs></Blogs>}></Route>
+        <Route path='/inventory' element={<ProtractedRoute><Inventory></Inventory></ProtractedRoute>}></Route>
+        <Route path='/manageInventori' element={<ManageInventori></ManageInventori>}></Route>
         <Route path='*' element={<Error></Error>}></Route>
       </Routes>
     </div>
