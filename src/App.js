@@ -10,6 +10,7 @@ import Blogs from './components/Blogs/Blogs';
 import ProtractedRoute from './components/ProtractedRoute/ProtractedRoute';
 import Inventory from './components/Inventory/Inventory';
 import ManageInventori from './components/ManageInventori/ManageInventori';
+import AddItem from './components/AddItem/AddItem';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path='/blogs' element={<Blogs></Blogs>}></Route>
         <Route path='/inventory' element={<ProtractedRoute><Inventory></Inventory></ProtractedRoute>}></Route>
         <Route path='/manageInventori' element={<ManageInventori></ManageInventori>}></Route>
+        <Route path='/addItem' element={<AddItem></AddItem>}></Route>
         <Route path='*' element={<Error></Error>}></Route>
       </Routes>
     </div>

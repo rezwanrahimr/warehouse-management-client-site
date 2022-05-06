@@ -38,7 +38,7 @@ const Header = () => {
                     </Navbar.Brand>
                     <Nav className="me-auto">
                         <Nav.Link href="/home">Home</Nav.Link>
-                        <Nav.Link href="/features">Features</Nav.Link>
+                        <Nav.Link href="/addItem">ManageInventories</Nav.Link>
                         <Nav.Link href="/blogs">Blogs</Nav.Link>
                         {
                             user?.uid ? (
