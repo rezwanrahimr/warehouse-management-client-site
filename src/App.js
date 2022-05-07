@@ -11,6 +11,7 @@ import ProtractedRoute from './components/ProtractedRoute/ProtractedRoute';
 import Inventory from './components/Inventory/Inventory';
 import ManageInventori from './components/ManageInventori/ManageInventori';
 import AddItem from './components/AddItem/AddItem';
+import { ToastContainer } from 'react-bootstrap';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route path='/addItem' element={<AddItem></AddItem>}></Route>
         <Route path='*' element={<Error></Error>}></Route>
       </Routes>
+      <ToastContainer />
     </div>
   );
 }
