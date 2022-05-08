@@ -25,10 +25,9 @@ const ManageInventori = () => {
 
   useEffect(() => {
     if (!user?.email) return;
-    // fetch("https://aqueous-journey-35546.herokuapp.com/inventory")
     fetch(
       "https://aqueous-journey-35546.herokuapp.com/manage-inventory?email=" +
-        user?.email
+      user?.email
     )
       .then((res) => res.json())
       .then((data) => setItem(data.data));

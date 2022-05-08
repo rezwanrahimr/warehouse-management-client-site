@@ -3,16 +3,15 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 import auth from "../../firebase";
 import React, { useState } from "react";
-import {
-  GoogleAuthProvider,
-  sendPasswordResetEmail,
-  signInWithPopup,
+import {GoogleAuthProvider,sendPasswordResetEmail,signInWithPopup,
 } from "firebase/auth";
-import { Alert, Button, Toast } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import Loading from "../Loading/Loading";
 import axios from "axios";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -24,7 +23,7 @@ const Login = () => {
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
   if (error) {
-    alert(error.message)
+    toast(error.message)
   } else if (loading) {
     return <Loading></Loading>;
   } else if (user) {
@@ -56,13 +55,13 @@ const Login = () => {
         const email = error.email;
         const credential = GoogleAuthProvider.credentialFromError(error);
         if (errorCode) {
-          Toast(errorCode.message);
+          toast(errorCode.message);
         }
         if (errorMessage) {
-          Toast(errorMessage);
+          toast(errorMessage);
         }
         if (email) {
-          Toast(email.message);
+          toast(email.message);
         }
       });
   };
@@ -71,18 +70,18 @@ const Login = () => {
   const handlePasswordReset = () => {
     sendPasswordResetEmail(auth, email)
       .then(() => {
-        alert("Password reset email sent!");
+        toast("Password reset email sent!");
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
 
         if (error) {
-          alert(error);
+          toast(error);
         } else if (errorCode) {
-          alert(errorCode);
+          toast(errorCode);
         } else if (errorMessage) {
-          alert(errorMessage);
+          toast(errorMessage);
         }
       });
   };
@@ -135,6 +134,7 @@ const Login = () => {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };

@@ -35,10 +35,10 @@ const Items = () => {
 
               <Button
                 onClick={() => navigate("/inventory")}
-                className="mx-3"
+                className="mx-3 fw-bold"
                 variant="primary"
               >
-                Update
+                Update +
               </Button>
             </Card.Body>
           </Card>

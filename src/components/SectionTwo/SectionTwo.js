@@ -11,12 +11,12 @@ import "./SectionTwo.css";
 
 const SectionTwo = () => {
   return (
-    <div>
+    <div className="alitem">
       <div>
-        <img className="itemOne" src={itemOne} alt="" />
+        <img className="itemOne w-100 img-fluid" src={itemOne} alt="" />
       </div>
       <div className="row">
-        <div className="col-md-6 text-center  d-flex align-items-center">
+        <div className="col-md-6 col-12 text-center  d-flex align-items-center">
           <div>
             <h2>Energy Efficient & Eco Friendly</h2>
             <h1>Air Conditioner</h1>
@@ -26,18 +26,18 @@ const SectionTwo = () => {
             </h6>
           </div>
         </div>
-        <div className="col-md-6">
-          <img className="w-100" src={itemTwo} alt="" />
+        <div className="col-md-6 col-12">
+          <img className="w-100 img-fluid" src={itemTwo} alt="" />
         </div>
       </div>
       <div>
-        <img className="w-100" src={itemThree} alt="" />
+        <img className="w-100 img-fluid" src={itemThree} alt="" />
       </div>
       <div className="row">
-        <div className="col-md-6">
+        <div className="col-md-6 col-12">
           <img className="w-100" src={item4} alt="" />
         </div>
-        <div className="col-md-6 text-center  d-flex align-items-center">
+        <div className="col-md-6 col-12 text-center  d-flex align-items-center">
           <div>
             <h1 className="fw-bold">REVOLUTION</h1>
             <h1>BEGINS HERE</h1>
@@ -50,10 +50,10 @@ const SectionTwo = () => {
         </div>
       </div>
       <div>
-        <img className="w-100" src={item5} alt="" />
+        <img className="w-100 img-fluid" src={item5} alt="" />
       </div>
       <div className="row">
-        <div className="col-md-6 text-center  d-flex align-items-center">
+        <div className="col-md-6 col-12 text-center  d-flex align-items-center">
           <div>
             <h2 className="fw-bold">Laundry</h2>
             <h3>Have now Smarter Options</h3>
@@ -64,18 +64,18 @@ const SectionTwo = () => {
             </h6>
           </div>
         </div>
-        <div className="col-md-6">
-          <img className="w-100" src={item6} alt="" />
+        <div className="col-md-6 col-12">
+          <img className="w-100 img-fluid" src={item6} alt="" />
         </div>
       </div>
       <div>
-        <img className="w-100" src={item7} alt="" />
+        <img className="w-100 img-fluid" src={item7} alt="" />
       </div>
       <div className="row">
-        <div className="col-md-6">
+        <div className="col-md-5 col-12">
           <img className="w-100" src={item8} alt="" />
         </div>
-        <div className="col-md-6 text-center  d-flex align-items-center">
+        <div className="col-md-5 col-12 text-center  d-flex align-items-center">
           <div>
             <h1 className="fw-bold">Microwave Oven</h1>
             <h2>Bring Comfort to Life</h2>

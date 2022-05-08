@@ -8,6 +8,9 @@ import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { Button, Toast } from "react-bootstrap";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import Loading from "../Loading/Loading";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -15,7 +18,7 @@ const SignUp = () => {
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
   if (error) {
-    Toast(error.message);
+    toast(error.message);
   } else if (loading) {
     return <Loading></Loading>;
   } else if (user) {
@@ -48,13 +51,13 @@ const SignUp = () => {
         const email = error.email;
         const credential = GoogleAuthProvider.credentialFromError(error);
         if (errorCode) {
-          Toast(errorCode.message);
+          toast(errorCode.message);
         }
         if (errorMessage) {
-          Toast(errorMessage);
+          toast(errorMessage);
         }
         if (email) {
-          Toast(email.message);
+          toast(email.message);
         }
       });
   };
@@ -110,6 +113,7 @@ const SignUp = () => {
           </div>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };

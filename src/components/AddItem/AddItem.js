@@ -2,6 +2,8 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AddItem = () => {
   const { register, handleSubmit } = useForm();
@@ -19,19 +21,19 @@ const AddItem = () => {
     })
       .then((res) => res.json())
       .then((result) => {
-        console.log(result);
+        toast('ITEM ADDED...')
       });
   };
 
   return (
     <div className="w-50 mx-auto">
-      <h2>Add New Items</h2>
-
+      <h2 className="fw-bold my-2 bg-light py-3 mb-4">Add New Item</h2>
       <form className="d-flex flex-column" onSubmit={handleSubmit(onSubmit)}>
         <input
           placeholder="Name"
           className="form-control"
           {...register("name")}
+
         />
         <input
           className="my-2 form-control"
@@ -60,10 +62,13 @@ const AddItem = () => {
           className="my-2 form-control"
           placeholder="Description"
           {...register("description")}
+
         />
-        <input type="submit" className="btn btn-success" value="Add Item" />
+        <input type="submit" className="btn btn-primary fw-bold" value="Submit" />
       </form>
+      <ToastContainer />
     </div>
+
   );
 };
 

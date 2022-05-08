@@ -60,8 +60,7 @@ const Inventory = () => {
 
   return (
     <div className="container">
-      <h2 className="my-3">Inventory Page</h2>
-
+       <h2 className="fw-bold my-2 bg-light py-3 mb-4">Inventory Items</h2>
       {/* items showing section start*/}
       <div className="row">
         {item.map((items) => (
@@ -80,7 +79,6 @@ const Inventory = () => {
                   Supplier: {items.supplier}
                 </Card.Subtitle>
                 <hr />
-
                 <div className="d-flex justify-content-between align-items-end row">
                   <div className="col-md-6">
                     <Button
@@ -96,8 +94,8 @@ const Inventory = () => {
                       {loading.isLoading && loading.id === items._id
                         ? "Processing..."
                         : Number(items.quantity) <= 0
-                        ? "Stock Out"
-                        : "Delivered"}
+                          ? "Stock Out"
+                          : "Delivered"}
                     </Button>
                   </div>
                   <div className="col-md-6">
@@ -129,12 +127,10 @@ const Inventory = () => {
 
       {/* items showing section end */}
 
-      <button
-        className="btn btn-warning"
-        onClick={() => navigate("/manageInventoriItems")}
-      >
-        Manage Inventori
-      </button>
+      <Button className="mb-5 mt-2 px-5 fw-bold" onClick={() => navigate("/manageInventoriItems")} variant="warning" size="lg">
+      Manage Inventori +
+  </Button>
+     
     </div>
   );
 };
