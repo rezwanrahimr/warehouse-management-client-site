@@ -8,6 +8,8 @@
 <hr>
 
 <h2>Live Websie Link: https://oracle-inventory.web.app/</h2>
+<hr>
+<h2>Heroku Link: https://aqueous-journey-35546.herokuapp.com/inventory</h2>
 
 <hr>
 <h2>features and functionality</h2>
