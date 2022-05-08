@@ -9,6 +9,7 @@ import item7 from "../../image/item7.jpg";
 import item8 from "../../image/item8.jpg";
 import "./SectionTwo.css";
 
+// Extra Section in Home Page.
 const SectionTwo = () => {
   return (
     <div className="alitem">

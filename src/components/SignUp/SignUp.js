@@ -5,17 +5,18 @@ import { useNavigate } from "react-router-dom";
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 import auth from "../../firebase";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
-import { Button, Toast } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { faGoogle } from "@fortawesome/free-brands-svg-icons";
 import Loading from "../Loading/Loading";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-
+// Sign-Up Page.
 const SignUp = () => {
   const navigate = useNavigate();
   // Email and Password Authentication Start !.
   const [createUserWithEmailAndPassword, user, loading, error] =
+  // Send Email Verification.
     useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
   if (error) {
     toast(error.message);
@@ -65,7 +66,7 @@ const SignUp = () => {
   return (
     <div>
       <div>
-        <div className="container mt-5 pt-5">
+        <div className="container mt-5 pt-5 mb-5">
           <div className="row">
             <div className="col-12 col-sm-8 col-md-6 m-auto">
               <h3>Please SignUp : </h3>

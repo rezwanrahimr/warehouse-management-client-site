@@ -4,6 +4,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { Navigate, useLocation } from "react-router-dom";
 import Loading from "../Loading/Loading";
 
+// ProtractedRoute.
 const ProtractedRoute = ({ children }) => {
   const [user, loading] = useAuthState(auth);
   const location = useLocation();

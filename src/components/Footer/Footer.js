@@ -1,16 +1,12 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faFacebookF,
-  faGoogle,
-  faInstagram,
-  faTwitter,
-  faYoutube,
-} from "@fortawesome/free-brands-svg-icons";
+import {faFacebookF,faGoogle,faInstagram,faTwitter,faYoutube,} from "@fortawesome/free-brands-svg-icons";
 import "./Footer.css";
 
+// Footer Section.
 const Footer = () => {
   return (
+    // Footer Section Start.
     <footer className="">
       <div className="footer-content">
         <h3>
@@ -60,6 +56,7 @@ const Footer = () => {
         </p>
       </div>
     </footer>
+    // Footer Section End !.
   );
 };
 

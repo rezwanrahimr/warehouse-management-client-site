@@ -3,6 +3,7 @@ import { Button, Card } from "react-bootstrap";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase";
 
+// My Items Section.
 const ManageInventori = () => {
   const [item, setItem] = useState([]);
   const [user] = useAuthState(auth);
@@ -32,7 +33,6 @@ const ManageInventori = () => {
       .then((res) => res.json())
       .then((data) => setItem(data.data));
   }, [user?.email]);
-
   return (
     <div className="container">
       <h2>My item Section</h2>
@@ -57,8 +57,13 @@ const ManageInventori = () => {
                   <Card.Subtitle className="mb-2 text-muted">
                     Supplier: {items.supplier}
                   </Card.Subtitle>
+                  <Card.Subtitle className="mb-2 text-muted">
+                    User: {user?.displayName}
+                  </Card.Subtitle>
+                  <Card.Subtitle className="mb-2 text-muted">
+                    Email: {user?.email}
+                  </Card.Subtitle>
                   <hr />
-
                   <Button
                     onClick={() => handleDelete(items._id)}
                     className="mx-3"

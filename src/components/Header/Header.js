@@ -3,6 +3,8 @@ import { Container, Nav, Navbar, } from "react-bootstrap";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import auth from "../../firebase";
 import "./Header.css";
+
+// Header Section.
 const Header = () => {
   const [user, setUser] = useState({});
   useEffect(() => {
@@ -19,14 +21,11 @@ const Header = () => {
     signOut(auth)
       .then(() => { })
       .catch((error) => { });
-
   };
 
   return (
     <div>
-
-
-
+      {/* Using Navbar */}
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
         <Container>
           <Navbar.Brand href="/home">ORACLE INVENTORY</Navbar.Brand>
@@ -38,10 +37,10 @@ const Header = () => {
                 <Nav.Link href="/inventory">MANAGE ITEMS</Nav.Link>
               )}
               {user?.uid && (
-                <Nav.Link href="/addItem">ADD ITEMS</Nav.Link>
+                <Nav.Link href="/addItem">ADD ITEM</Nav.Link>
               )}
               {user?.uid && (
-                <Nav.Link href="/manageInventory">MY ITEM</Nav.Link>
+                <Nav.Link href="/manageInventory">MY ITEMS</Nav.Link>
               )}
 
             </Nav>
@@ -59,10 +58,7 @@ const Header = () => {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-
-
-
-
+      {/* Navbar End !. */}
     </div>
   );
 };

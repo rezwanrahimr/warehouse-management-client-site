@@ -3,6 +3,7 @@ import { Button, Card } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import "./Items.css";
 
+// Inventori Item (Showing Home Page)
 const Items = () => {
   const navigate = useNavigate();
   const [item, SetItem] = useState([]);

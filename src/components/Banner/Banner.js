@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Carousel } from "react-bootstrap";
 import cursolImage from "../../image/carsol1.jpg";
 import cursolImagetwo from "../../image/carsol2.jpg";
+
+// Banner Section (Showing Home Page)
 const Banner = () => {
   const [index, setIndex] = useState(0);
   const handleSelect = (selectedIndex, e) => {
@@ -9,6 +11,7 @@ const Banner = () => {
   };
   return (
     <div>
+      {/* Usign Carousel */}
       <Carousel className="banner" activeIndex={index} onSelect={handleSelect}>
         <Carousel.Item>
           <img className="d-block w-100" src={cursolImage} alt="First slide" />

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Button, Card } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
+// Inventory Section.
 const Inventory = () => {
   const navigate = useNavigate();
   const [item, setItem] = useState([]);

@@ -5,6 +5,8 @@ import auth from "../../firebase";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+
+// Add Item Section ! Added A New Item.
 const AddItem = () => {
   const { register, handleSubmit } = useForm();
   const [user] = useAuthState(auth);
@@ -64,7 +66,7 @@ const AddItem = () => {
           {...register("description")}
 
         />
-        <input type="submit" className="btn btn-primary fw-bold" value="Submit" />
+        <input type="submit" className="btn btn-primary fw-bold mb-5" value="Submit" />
       </form>
       <ToastContainer />
     </div>

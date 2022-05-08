@@ -1,11 +1,13 @@
 import React from "react";
 import { Accordion } from "react-bootstrap";
 
+// Blogs Section.
 const Blogs = () => {
   return (
     <div>
+      {/* Blogs Section Start */}
       <h1 className="bg-light mt-2 py-2">Frequently Asked Questions</h1>
-      <div className="container mt-5">
+      <div className="container mt-5 mb-5">
         <Accordion defaultActiveKey="0">
           <Accordion.Item eventKey="0">
             <Accordion.Header>
@@ -97,6 +99,7 @@ const Blogs = () => {
           </Accordion.Item>
         </Accordion>
       </div>
+      {/* Blogs Section End ! */}
     </div>
   );
 };

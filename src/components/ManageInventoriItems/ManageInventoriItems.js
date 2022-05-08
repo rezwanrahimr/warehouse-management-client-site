@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Button, Card } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
+// Manage Inventori Section.
 const ManageInventoriItems = () => {
     const [item, setItem] = useState([]);
     const navigate = useNavigate();
@@ -31,7 +32,7 @@ const ManageInventoriItems = () => {
 
     return (
         <div className="container">
-            <h2>My item Section</h2>
+           <h2 className="fw-bold my-2 bg-light py-3 mb-4">Manage Inventory Section</h2>
             <div className="row">
                 {item?.length > 0 ? (
                     item.map((items) => (
@@ -71,7 +72,7 @@ const ManageInventoriItems = () => {
                 )}
             </div>
             <button
-                className="btn btn-warning"
+                className="btn btn-warning px-5 my-3 "
                 onClick={() => navigate("/addItem")}
             >
                 Add items

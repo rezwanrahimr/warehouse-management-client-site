@@ -1,8 +1,9 @@
 import React from "react";
 import imageOne from "../../image/410-4108569_get-it-on-google-play-logo-png-vector-removebg-preview.png";
 import displayApp from "../../image/app-removebg-preview.png";
-
 import "./App.css";
+
+// App Section (Extra Section in Home Page).
 const App = () => {
   return (
     <div className="my-5">

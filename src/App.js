@@ -12,6 +12,7 @@ import ManageInventori from "./components/ManageInventori/ManageInventori";
 import AddItem from "./components/AddItem/AddItem";
 import { ToastContainer } from "react-bootstrap";
 import ManageInventoriItems from "./components/ManageInventoriItems/ManageInventoriItems";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
@@ -23,30 +24,13 @@ function App() {
         <Route path="/login" element={<Login></Login>}></Route>
         <Route path="/signup" element={<SignUp></SignUp>}></Route>
         <Route path="/blogs" element={<Blogs></Blogs>}></Route>
-        <Route
-          path="/inventory"
-          element={
-            <ProtractedRoute>
-              <Inventory></Inventory>
-            </ProtractedRoute>
-          }
-        ></Route>
-        <Route
-          path="/manageInventory"
-          element={<ManageInventori></ManageInventori>}
-        ></Route>
-        <Route
-          path="/addItem"
-          element={
-            <ProtractedRoute>
-              <AddItem />
-            </ProtractedRoute>
-          }
-        ></Route>
+        <Route path="/inventory" element={<ProtractedRoute><Inventory></Inventory></ProtractedRoute>}></Route>
+        <Route path="/manageInventory"element={<ProtractedRoute><ManageInventori></ManageInventori></ProtractedRoute>}></Route>
+        <Route path="/addItem" element={<ProtractedRoute><AddItem /></ProtractedRoute>}></Route>
         <Route path="/manageInventoriItems" element={<ManageInventoriItems></ManageInventoriItems>}></Route>
         <Route path="*" element={<Error></Error>}></Route>
       </Routes>
-      <ToastContainer />
+      <Footer></Footer>
     </div>
   );
 }
