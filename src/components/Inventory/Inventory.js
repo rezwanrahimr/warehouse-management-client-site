@@ -1,60 +1,142 @@
-import React, { useEffect, useState } from 'react';
-import { Button, Card } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { Button, Card } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 const Inventory = () => {
-    const navigate = useNavigate();
-    const handleDelevered = (id, quantity) => {
-        console.log(id, quantity)
-        const body = { quantity: Number(quantity) - 1 };
-        fetch('http://localhost:5000/checkout/' + id, {
-            method: "POST", headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(body)
-        })
-            .then(res => res.json())
-            .then(data => console.log(data));
+  const navigate = useNavigate();
+  const [item, setItem] = useState([]);
+  const [stockQuantity, setStockQuantity] = useState("0");
+  const [loading, setLoading] = useState({
+    id: "",
+    isLoading: false,
+    isStock: false,
+  });
 
-    }
+  const loadData = () => {
+    fetch("https://aqueous-journey-35546.herokuapp.com/inventory")
+      .then((res) => res.json())
+      .then((data) => setItem(data));
+  };
 
-    // load items
-    const [item, SetItem] = useState([]);
-    useEffect(() => {
-        fetch('https://aqueous-journey-35546.herokuapp.com/inventory')
-            .then(res => res.json())
-            .then(data => SetItem(data));
-    }, [])
-    return (
-        <div>
-            <h2>This is inventory page</h2>
+  // Load data when component is mounted
+  useEffect(() => {
+    loadData();
+  }, []);
 
-            {/* items showing section start*/}
-            {
-                item.map(items => <div key={items._id}>
+  const handleOrder = (id, quantity) => {
+    setLoading({ id, isLoading: true, isStock: false });
+    const body = { quantity: Number(quantity) - 1 };
+    fetch("https://aqueous-journey-35546.herokuapp.com/checkout/" + id, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.status === 1) {
+          loadData();
+        }
+        setLoading({ id: "", isLoading: false, isStock: false });
+      });
+  };
 
+  const handleReStock = (id, quantity) => {
+    if (stockQuantity === "") return;
+    setLoading({ id, isStock: true, isLoading: false });
+    const body = { quantity: !quantity ? 0 : quantity, stock: stockQuantity };
+    fetch("https://aqueous-journey-35546.herokuapp.com/re_stock/" + id, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.status === 1) {
+          loadData();
+        }
+        setLoading({ id: "", isStock: false, isLoading: false });
+      });
+  };
 
+  return (
+    <div className="container">
+      <h2 className="my-3">Inventory Page</h2>
 
-                    <Card className='my-3' style={{ width: '18rem' }}>
-                        <Card.Img variant="top" src={items.img} />
-                        <Card.Body>
-                            <Card.Title>{items.name}</Card.Title>
-                            <Card.Subtitle className="mb-2 text-muted">Quantity: {items.quantity}</Card.Subtitle>
-                            <Card.Subtitle className="mb-2 text-muted">Price: $ {items.price}</Card.Subtitle>
-                            <Card.Subtitle className="mb-2 text-muted">Supplier: {items.supplier}</Card.Subtitle>
-                            <hr />
+      {/* items showing section start*/}
+      <div className="row">
+        {item.map((items) => (
+          <div key={items._id} className="col-md-3">
+            <Card className="my-3" style={{ width: "18rem" }}>
+              <Card.Img variant="top" src={items.img} style={{ height: 220 }} />
+              <Card.Body>
+                <Card.Title>{items.name}</Card.Title>
+                <Card.Subtitle className="mb-2 text-muted">
+                  Quantity: {items.quantity}
+                </Card.Subtitle>
+                <Card.Subtitle className="mb-2 text-muted">
+                  Price: $ {items.price}
+                </Card.Subtitle>
+                <Card.Subtitle className="mb-2 text-muted">
+                  Supplier: {items.supplier}
+                </Card.Subtitle>
+                <hr />
 
+                <div className="d-flex justify-content-between align-items-end row">
+                  <div className="col-md-6">
+                    <Button
+                      onClick={() => handleOrder(items._id, items.quantity)}
+                      disabled={
+                        (Number(items.quantity) <= 0 ||
+                          (loading.isLoading && loading.id === items._id)) &&
+                        true
+                      }
+                      className="mx-0 w-100"
+                      variant="danger"
+                    >
+                      {loading.isLoading && loading.id === items._id
+                        ? "Processing..."
+                        : Number(items.quantity) <= 0
+                        ? "Stock Out"
+                        : "Delivered"}
+                    </Button>
+                  </div>
+                  <div className="col-md-6">
+                    <input
+                      type="number"
+                      className="form-control mb-1"
+                      placeholder="Quantity"
+                      onChange={(e) => setStockQuantity(e.target.value)}
+                    />
+                    <Button
+                      onClick={() => handleReStock(items._id, items.quantity)}
+                      className="mx-0 w-100"
+                      variant="danger"
+                      disabled={
+                        loading.isStock && loading.id === items._id && true
+                      }
+                    >
+                      {loading.isStock && loading.id === items._id
+                        ? "Stocking..."
+                        : "Restock"}
+                    </Button>
+                  </div>
+                </div>
+              </Card.Body>
+            </Card>
+          </div>
+        ))}
+      </div>
 
-                            <Button onClick={() => handleDelevered(items._id, items.quantity)} disabled={Number(items.quantity) <= 0 && true} className='mx-3' variant="danger">{Number(items.quantity)<= 0 ?'stock out': 'Delivered'}</Button>
+      {/* items showing section end */}
 
-                        </Card.Body>
-                    </Card>
-                </div>)
-            }
-
-            {/* items showing section end */}
-
-            <button onClick={() => navigate("/manageInventori")}>Manage Inventori</button>
-        </div>
-    );
+      <button
+        className="btn btn-warning"
+        onClick={() => navigate("/manageInventoriItems")}
+      >
+        Manage Inventori
+      </button>
+    </div>
+  );
 };
 
 export default Inventory;

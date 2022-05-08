@@ -1,6 +1,5 @@
-@media only screen and (max-width:576px) {
-    .navbarr {
-        width: 100%;
-    }
-
+@media only screen and (max-width: 576px) {
+  .navbarr {
+    width: 100%;
+  }
 }

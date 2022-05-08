@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Button, Card } from "react-bootstrap";
-import { useAuthState } from "react-firebase-hooks/auth";
+import { useNavigate } from "react-router-dom";
 import auth from "../../firebase";
 
-const ManageInventori = () => {
+const ManageInventoriItems = () => {
   const [item, setItem] = useState([]);
-  const [user] = useAuthState(auth);
+  const navigate = useNavigate();
 
   const handleDelete = (id) => {
     const proceed = window.confirm("Are you sure?");
@@ -24,15 +24,11 @@ const ManageInventori = () => {
   };
 
   useEffect(() => {
-    if (!user?.email) return;
-    // fetch("https://aqueous-journey-35546.herokuapp.com/inventory")
-    fetch(
-      "https://aqueous-journey-35546.herokuapp.com/manage-inventory?email=" +
-        user?.email
-    )
-      .then((res) => res.json())
-      .then((data) => setItem(data.data));
-  }, [user?.email]);
+    fetch("https://aqueous-journey-35546.herokuapp.com/inventory")
+    .then((res) => res.json())
+      .then((data) => setItem(data));
+     
+  }, []);
 
   return (
     <div className="container">
@@ -75,8 +71,14 @@ const ManageInventori = () => {
           <h2>No Data</h2>
         )}
       </div>
+      <button
+        className="btn btn-warning"
+        onClick={() => navigate("/addItem")}
+      >
+        Add items
+      </button>
     </div>
   );
 };
 
-export default ManageInventori;
+export default ManageInventoriItems;

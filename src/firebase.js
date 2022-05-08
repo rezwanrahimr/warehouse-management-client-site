@@ -11,7 +11,7 @@ const firebaseConfig = {
   projectId: "oracle-inventory",
   storageBucket: "oracle-inventory.appspot.com",
   messagingSenderId: "502556506783",
-  appId: "1:502556506783:web:c09132864dbed67cf9c0aa"
+  appId: "1:502556506783:web:c09132864dbed67cf9c0aa",
 };
 
 // Initialize Firebase
