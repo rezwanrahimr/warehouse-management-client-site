@@ -12,9 +12,9 @@
 <hr>
 <h2>features and functionality</h2>
 
-➼ If the user wants to go to the manage item section of the website you can dalevered his item or product.
-➼ If the user wants to go to the manage item section of the website, you can increase his item or product quantity.
-➼ If the user wants to go to the add item section of the website, you can easily add his item or product to the website.
-➼ If the user wants to go to the my item section of the website, you can see all the added items or products and you can easily manage.
+➼ If the user wants to go to the manage item section of the website you can dalevered his item or product.<br>
+➼ If the user wants to go to the manage item section of the website, you can increase his item or product quantity.<br>
+➼ If the user wants to go to the add item section of the website, you can easily add his item or product to the website.<br>
+➼ If the user wants to go to the my item section of the website, you can see all the added items or products and you can easily manage.<br>
 ➼ And the website is completely user friendly and mobile responsive.
 
